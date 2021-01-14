@@ -22,4 +22,14 @@
     </insert>
 
 
+    <select id="querypropretyById" resultType="com.wzc.shopproduct_wzc.entity.po.ShopProperty" parameterType="java.lang.Integer">
+        select  * from shop_property where id=#{id}
+    </select>
+
+    <update id="updatePropertyData" parameterType="com.wzc.shopproduct_wzc.entity.po.ShopProperty">
+        update  shop_property set name=#{name},nameCH=#{nameCH},typeId=#{typeId},type=#{type},isSKU=#{isSKU},isDel=#{isDel},updateDate=#{updateDate},author=#{author} where id=#{id}
+    </update>
+
+
+
 </mapper>

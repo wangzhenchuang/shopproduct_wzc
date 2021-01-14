@@ -36,4 +36,18 @@ public class ShopPropertyServiceImpl  implements ShopPropertyService {
         Integer addPropertyData = shopPropertyDao.addPropertyData(property);
         return  addPropertyData;
     }
+
+    @Override
+    public ShopProperty querypropretyById(Integer id) {
+        return shopPropertyDao.querypropretyById(id);
+    }
+
+    @Override
+    public void updatePropertyData(ShopProperty property) {
+        property.setAuthor("admin");
+        property.setUpdateDate(new Date());
+        shopPropertyDao.updatePropertyData(property);
+    }
+
+
 }

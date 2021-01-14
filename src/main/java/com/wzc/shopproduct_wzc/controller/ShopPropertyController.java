@@ -19,7 +19,7 @@ public class ShopPropertyController {
 
     /*
     *
-    *    查询所有的品牌数据
+    *    查询所有的属性数据
             路径  http://localhost:8080/api/property/propertyData
 
         post请求
@@ -41,7 +41,7 @@ public class ShopPropertyController {
     }
 
     /*
-      * 新增分类
+      * 新增属性数据
 
         路径   http://localhost:8080/api/property/add
 
@@ -58,5 +58,45 @@ public class ShopPropertyController {
         Integer id = shopProperty.getId();
         return ResultData.success(id);
     }
+
+      /*
+      * 根据id查找属性数据
+
+        路径   http://localhost:8080/api/property/queryById
+
+       post请求
+       参数
+
+        返回值    {code:"",message:"",data:null}
+      * */
+    //回显
+    @GetMapping("queryById")
+    public  ResultData  queryPropertyById(Integer id){
+        if (id==null){
+             return  ResultData.error(400,"参数不符合规则");
+        }
+        ShopProperty byId = shopPropertyService.querypropretyById(id);
+        return  ResultData.success(byId);
+    }
+
+     /*
+      * 根据id修改属性数据
+
+        路径   http://localhost:8080/api/property/update
+
+       post请求
+       参数
+
+        返回值    {code:"",message:"",data:null}
+      * */
+     @PostMapping("update")
+     public  ResultData updatePropertyData(ShopProperty property){
+         if (property.getId()==null){
+               return  ResultData.error(400,"参数不符合规则");
+         }
+         shopPropertyService.updatePropertyData(property);
+         return   ResultData.success(null);
+     }
+
 
 }

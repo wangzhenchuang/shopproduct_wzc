@@ -11,4 +11,10 @@ public interface ShopPropertyService {
 
     public  Integer addPropertyData(ShopProperty property);
 
+    public  ShopProperty  querypropretyById(Integer id);
+
+    public   void  updatePropertyData(ShopProperty property);
+
+
+
 }

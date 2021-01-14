@@ -15,4 +15,13 @@ public interface ShopPropertyDao {
     //新增属性数据
     public  Integer addPropertyData(ShopProperty property);
 
+    //修改 回显数据
+    public  ShopProperty querypropretyById(Integer id);
+
+    public  void updatePropertyData(ShopProperty property);
+
+
+
+
+
 }
