@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wzc.shopproduct_wzc.dao.ShopTypeDao">
+
+        <!--分类管理数据查询-->
+       <select id="queryShopTypeList" resultType="com.wzc.shopproduct_wzc.entity.po.ShopType">
+           select  * from  shop_type where 1=1
+       </select>
+
+        <!--根据 pid 查询分类数据-->
+       <select id="queryShopTypeByPid" resultType="com.wzc.shopproduct_wzc.entity.po.ShopType" parameterType="java.lang.Integer">
+           select  * from  shop_type  where pid=#{pid}
+       </select>
+
+        <!--新增分类数据-->
+        <insert id="addShopTypeData" parameterType="com.wzc.shopproduct_wzc.entity.po.ShopType" useGeneratedKeys="true" keyProperty="id">
+            insert into shop_type (name,pid,createDate,operator,isDel) value (#{name},#{pid},#{createDate},#{operator},#{isDel})
+        </insert>
+
+        <update id="updateShopTypeData" parameterType="com.wzc.shopproduct_wzc.entity.po.ShopType">
+          update shop_type set name=#{name},updateDate=#{updateDate} where id=#{id}
+        </update>
+
+        <update id="deleteShopData" parameterType="com.wzc.shopproduct_wzc.entity.po.ShopType">
+                update shop_type set isDel=1  where id=#{id}
+        </update>
+
+</mapper>
