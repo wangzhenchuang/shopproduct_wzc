@@ -11,4 +11,8 @@ public interface ShopPropertyDao {
     public  Long  queryPropertyByCount(BrandParams params);
     //查询属性分页数据
     public List<ShopProperty> queryPropertyPage(BrandParams params);
+
+    //新增属性数据
+    public  Integer addPropertyData(ShopProperty property);
+
 }

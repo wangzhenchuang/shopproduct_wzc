@@ -14,7 +14,7 @@ public class ShopProperty {
 
     private   String  nameCH;
 
-    private  Integer type⁯Id; //类型id
+    private Integer typeId;  //类型id
 
     private  Integer  type;  //属性的类型    0 下拉框     1 单选框      2  复选框   3  输入框
 
@@ -54,12 +54,12 @@ public class ShopProperty {
         this.nameCH = nameCH;
     }
 
-    public Integer getType⁯Id() {
-        return type⁯Id;
+    public Integer getTypeId() {
+        return typeId;
     }
 
-    public void setType⁯Id(Integer type⁯Id) {
-        this.type⁯Id = type⁯Id;
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
     }
 
     public Integer getType() {
@@ -109,4 +109,5 @@ public class ShopProperty {
     public void setAuthor(String author) {
         this.author = author;
     }
+
 }

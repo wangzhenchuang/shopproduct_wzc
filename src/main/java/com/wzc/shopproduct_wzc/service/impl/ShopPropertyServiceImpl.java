@@ -7,6 +7,7 @@ import com.wzc.shopproduct_wzc.service.ShopPropertyService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,5 +26,14 @@ public class ShopPropertyServiceImpl  implements ShopPropertyService {
         List<ShopProperty> shopProperties = shopPropertyDao.queryPropertyPage(params);
         map.put("list",shopProperties);
         return map;
+    }
+
+    //新增属性数据
+    @Override
+    public Integer addPropertyData(ShopProperty property) {
+        property.setAuthor("admin");
+        property.setCreateDate(new Date());
+        Integer addPropertyData = shopPropertyDao.addPropertyData(property);
+        return  addPropertyData;
     }
 }

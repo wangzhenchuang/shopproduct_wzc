@@ -16,6 +16,10 @@
          limit ${size*(start-1)},#{size}
     </select>
 
+    <insert id="addPropertyData" parameterType="com.wzc.shopproduct_wzc.entity.po.ShopProperty" useGeneratedKeys="true" keyProperty="id">
+        insert into shop_property (name,nameCH,typeId,type,isSKU,isDel,createDate,author)
+        values (#{name},#{nameCH},#{typeId},#{type},#{isSKU},#{isDel},#{createDate},#{author})
+    </insert>
 
 
 </mapper>

@@ -1,5 +1,6 @@
 package com.wzc.shopproduct_wzc.controller;
 
+import com.wzc.shopproduct_wzc.entity.po.ShopProperty;
 import com.wzc.shopproduct_wzc.entity.vo.BrandParams;
 import com.wzc.shopproduct_wzc.entity.vo.ResultData;
 import com.wzc.shopproduct_wzc.service.ShopPropertyService;
@@ -29,10 +30,33 @@ public class ShopPropertyController {
     * */
     @PostMapping("propertyData")
     public ResultData queryPropertyData(BrandParams params){
+        if (params.getStart()==null){
+            return  ResultData.error(400,"参数不符合规则");
+        }
+        if (params.getSize()==null){
+            return  ResultData.error(400,"参数不符合规则");
+        }
         Map propertyPage = shopPropertyService.queryPropertyPage(params);
         return  ResultData.success(propertyPage);
     }
 
+    /*
+      * 新增分类
 
+        路径   http://localhost:8080/api/property/add
+
+       post请求
+
+       参数
+
+        返回值    {code:"",message:"",data:新增的id}
+      * */
+    //新增属性数据
+    @PostMapping("add")
+    public  ResultData  addPropertyData(ShopProperty shopProperty){
+        shopPropertyService.addPropertyData(shopProperty);
+        Integer id = shopProperty.getId();
+        return ResultData.success(id);
+    }
 
 }
