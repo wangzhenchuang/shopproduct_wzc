@@ -15,6 +15,6 @@ public interface ShopPropertyService {
 
     public   void  updatePropertyData(ShopProperty property);
 
-
+     public  void deletePropertyData(Integer id);
 
 }

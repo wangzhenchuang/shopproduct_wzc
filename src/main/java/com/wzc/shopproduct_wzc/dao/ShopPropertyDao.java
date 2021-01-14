@@ -20,7 +20,7 @@ public interface ShopPropertyDao {
 
     public  void updatePropertyData(ShopProperty property);
 
-
+    public  void  deletePropertyData(Integer id);
 
 
 

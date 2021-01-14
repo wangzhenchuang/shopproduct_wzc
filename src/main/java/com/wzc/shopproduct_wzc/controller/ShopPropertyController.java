@@ -99,4 +99,21 @@ public class ShopPropertyController {
      }
 
 
+     /*
+      * 根据id删除属性数据
+
+        路径   http://localhost:8080/api/property/delete
+
+       post请求
+       参数
+
+        返回值    {code:"",message:"",data:null}
+      * */
+      @PostMapping("delete")
+      public  ResultData  deletePropertyData(Integer id){
+         shopPropertyService.deletePropertyData(id);
+         return ResultData.success(null);
+   }
+
+
 }

@@ -30,6 +30,8 @@
         update  shop_property set name=#{name},nameCH=#{nameCH},typeId=#{typeId},type=#{type},isSKU=#{isSKU},isDel=#{isDel},updateDate=#{updateDate},author=#{author} where id=#{id}
     </update>
 
-
+    <update id="deletePropertyData" parameterType="java.lang.Integer">
+      update shop_property set isDel=1 where id=#{id}
+    </update>
 
 </mapper>

@@ -49,5 +49,8 @@ public class ShopPropertyServiceImpl  implements ShopPropertyService {
         shopPropertyDao.updatePropertyData(property);
     }
 
-
+    @Override
+    public void deletePropertyData(Integer id) {
+        shopPropertyDao.deletePropertyData(id);
+    }
 }
