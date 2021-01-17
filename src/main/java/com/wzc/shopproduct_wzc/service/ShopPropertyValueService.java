@@ -10,4 +10,8 @@ public interface ShopPropertyValueService {
 
     public  void addPropertyValue(ShopPropertyValue propertyValue);
 
+    public  void  updatePropertyValue(ShopPropertyValue propertyValue);
+
+    public  void  deletePropertyValue(Integer id);
+
 }

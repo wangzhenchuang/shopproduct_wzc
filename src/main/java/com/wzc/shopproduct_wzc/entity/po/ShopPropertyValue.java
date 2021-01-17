@@ -10,6 +10,8 @@ public class ShopPropertyValue {
 
     private  Integer  proId;
 
+    private  int   isDel;
+
     public Integer getId() {
         return id;
     }
@@ -40,5 +42,13 @@ public class ShopPropertyValue {
 
     public void setProId(Integer proId) {
         this.proId = proId;
+    }
+
+    public int getIsDel() {
+        return isDel;
+    }
+
+    public void setIsDel(int isDel) {
+        this.isDel = isDel;
     }
 }

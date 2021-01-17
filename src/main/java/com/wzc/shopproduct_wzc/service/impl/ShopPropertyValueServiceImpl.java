@@ -24,4 +24,14 @@ public class ShopPropertyValueServiceImpl implements ShopPropertyValueService {
     public void addPropertyValue(ShopPropertyValue propertyValue) {
         shopPropertyValueDao.addPropertyValue(propertyValue);
     }
+
+    public  void updatePropertyValue(ShopPropertyValue shopPropertyValue){
+        shopPropertyValueDao.updatePropertyValue(shopPropertyValue);
+    }
+
+    @Override
+    public void deletePropertyValue(Integer id) {
+        shopPropertyValueDao.deletepropertyValue(id);
+    }
+
 }

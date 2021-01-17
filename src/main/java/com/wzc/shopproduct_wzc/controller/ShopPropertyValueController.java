@@ -33,4 +33,16 @@ public class ShopPropertyValueController {
         return  ResultData.success(null);
     }
 
+    @PostMapping("valueUpdate")
+    public  ResultData updatePropertyValue(ShopPropertyValue shopPropertyValue){
+        shopPropertyValueService.updatePropertyValue(shopPropertyValue);
+        return  ResultData.success(null);
+    }
+
+    @PostMapping("delete")
+    public  ResultData deletePropertyValue(Integer id){
+        shopPropertyValueService.deletePropertyValue(id);
+        return  ResultData.success(null);
+    }
+
 }
