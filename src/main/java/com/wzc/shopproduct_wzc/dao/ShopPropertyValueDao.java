@@ -13,10 +13,10 @@ public interface ShopPropertyValueDao {
     @Select("select * from shop_property_value where proId=#{attrId} and isDel=0")
     public List<ShopPropertyValue> queryPropertyValue(Integer attrId);
 
-    @Insert("insert into shop_property_value (value,valueCh,proId) value (#{value},#{valueCh},#{proId})")
+    @Insert("insert into shop_property_value (value,valueCh,proId,isDel) value (#{value},#{valueCh},#{proId},#{isDel})")
     public  void  addPropertyValue(ShopPropertyValue propertyValue);
 
-    @Update(" update shop_property_value set value=#{value},valueCh=#{valueCh} where id=#{id} ")
+    @Update(" update shop_property_value set value=#{value},valueCh=#{valueCh},isDel=#{isDel} where id=#{id} ")
     public  void updatePropertyValue(ShopPropertyValue propertyValue);
 
     @Update(" update shop_property_value set isDel=1 where id=#{id}")
