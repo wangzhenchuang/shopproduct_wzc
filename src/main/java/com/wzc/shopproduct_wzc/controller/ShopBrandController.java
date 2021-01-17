@@ -4,13 +4,16 @@ import com.wzc.shopproduct_wzc.entity.po.ShopBrand;
 import com.wzc.shopproduct_wzc.entity.vo.BrandParams;
 import com.wzc.shopproduct_wzc.entity.vo.ResultData;
 import com.wzc.shopproduct_wzc.service.ShopBrandService;
+import com.wzc.shopproduct_wzc.utils.OssFile;
 import com.wzc.shopproduct_wzc.utils.SaveFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.util.Map;
+import java.util.UUID;
 
 @RestController
 @CrossOrigin
@@ -124,15 +127,21 @@ public class ShopBrandController {
     * */
     //图片上传
     @PostMapping("upload")
-    public  ResultData upload(MultipartFile file, HttpServletRequest request){
-        String imgs = SaveFile.saveFile(file, "imgs", request);
-        return  ResultData.success(imgs);
+    public  ResultData upload(MultipartFile file) throws IOException {
+        //处理新名称
+        String originalFilename = file.getOriginalFilename();
+        //防止重命名
+        String newName = UUID.randomUUID().toString()+originalFilename.substring(originalFilename.lastIndexOf("."));
+        //存储路径
+        newName="imgs/"+newName;
+        String file1 = OssFile.uploadFile(file.getInputStream(), newName);
+        return  ResultData.success(file1);
     }
 
 /*   回显
     *请求路径 : http://localhost:8080/api/brand/queryById
     *
-    *请求方式 post
+    *请求方式 get
     *
     *返回值
      * Code(200);成功回调函数
@@ -142,7 +151,6 @@ public class ShopBrandController {
     * 参数
     * id 必填
     * */
-    //图片上传
     @GetMapping("queryById")
     public  ResultData  queryBrandById(Integer id){
         ShopBrand shopBrand = shopBrandService.queryBrandById(id);
