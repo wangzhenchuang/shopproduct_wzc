@@ -12,6 +12,7 @@ public class BrandParams<T> {
 
     private  String name;
 
+    private  String  nameCH;
 
     public Integer getStart() {
         return start;
@@ -35,5 +36,13 @@ public class BrandParams<T> {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getNameCH() {
+        return nameCH;
+    }
+
+    public void setNameCH(String nameCH) {
+        this.nameCH = nameCH;
     }
 }

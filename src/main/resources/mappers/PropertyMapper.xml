@@ -8,11 +8,24 @@
     <!--查询总条数-->
     <select id="queryPropertyByCount" resultType="java.lang.Long" parameterType="com.wzc.shopproduct_wzc.entity.vo.BrandParams">
         select  count(1) from shop_property where 1=1 and isDel=0
+        <if test="name!=null and name!=''">
+            and name=#{name}
+        </if>
+        <if test="nameCH!=null and nameCH!=''">
+            and nameCH=#{nameCH}
+        </if>
+
     </select>
 
     <!--查询所有数据-->
     <select id="queryPropertyPage" resultType="com.wzc.shopproduct_wzc.entity.po.ShopProperty" parameterType="com.wzc.shopproduct_wzc.entity.vo.BrandParams">
         select * from shop_property where 2=2 and isDel=0
+         <if test="name!=null and name!=''">
+            and name=#{name}
+        </if>
+        <if test="nameCH!=null and nameCH!=''">
+            and nameCH=#{nameCH}
+        </if>
          limit ${size*(start-1)},#{size}
     </select>
 
