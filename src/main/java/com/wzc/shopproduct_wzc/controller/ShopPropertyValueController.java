@@ -26,4 +26,11 @@ public class ShopPropertyValueController {
         return  ResultData.success(valueList);
     }
 
+    @PostMapping("valueAdd")
+    public  ResultData addPropertyValue(ShopPropertyValue propertyValue){
+
+        shopPropertyValueService.addPropertyValue(propertyValue);
+        return  ResultData.success(null);
+    }
+
 }

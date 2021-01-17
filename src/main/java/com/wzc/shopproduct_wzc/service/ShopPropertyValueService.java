@@ -8,5 +8,6 @@ public interface ShopPropertyValueService {
 
     public List<ShopPropertyValue> queryPropertyValue(Integer attrId);
 
+    public  void addPropertyValue(ShopPropertyValue propertyValue);
 
 }

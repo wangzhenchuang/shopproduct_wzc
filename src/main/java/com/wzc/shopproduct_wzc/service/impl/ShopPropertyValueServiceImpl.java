@@ -19,4 +19,9 @@ public class ShopPropertyValueServiceImpl implements ShopPropertyValueService {
         List<ShopPropertyValue> shopPropertyValues = shopPropertyValueDao.queryPropertyValue(attrId);
         return shopPropertyValues;
     }
+
+    @Override
+    public void addPropertyValue(ShopPropertyValue propertyValue) {
+        shopPropertyValueDao.addPropertyValue(propertyValue);
+    }
 }
