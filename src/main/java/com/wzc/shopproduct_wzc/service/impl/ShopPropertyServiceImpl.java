@@ -53,4 +53,10 @@ public class ShopPropertyServiceImpl  implements ShopPropertyService {
     public void deletePropertyData(Integer id) {
         shopPropertyDao.deletePropertyData(id);
     }
+
+    //根据typeid查询属性数据
+    @Override
+    public List<ShopProperty> queryPropertyBytyid(Integer typeid) {
+        return shopPropertyDao.queryPropertyBytyid(typeid);
+    }
 }

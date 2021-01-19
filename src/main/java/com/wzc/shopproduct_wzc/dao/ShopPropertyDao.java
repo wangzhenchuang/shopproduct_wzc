@@ -2,9 +2,11 @@ package com.wzc.shopproduct_wzc.dao;
 
 import com.wzc.shopproduct_wzc.entity.po.ShopProperty;
 import com.wzc.shopproduct_wzc.entity.vo.BrandParams;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
-
+@Mapper
 public interface ShopPropertyDao {
 
     //查询属性总条数
@@ -22,6 +24,8 @@ public interface ShopPropertyDao {
 
     public  void  deletePropertyData(Integer id);
 
-
+    //根据typeId查询数据
+    @Select("select * from shop_property where typeId=#{typeid} and isDel=0")
+    public List<ShopProperty>  queryPropertyBytyid(Integer typeid);
 
 }

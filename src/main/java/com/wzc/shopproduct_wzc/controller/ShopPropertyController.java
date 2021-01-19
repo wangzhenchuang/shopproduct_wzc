@@ -114,6 +114,23 @@ public class ShopPropertyController {
          shopPropertyService.deletePropertyData(id);
          return ResultData.success(null);
    }
+    /*
+      * 根据typeid查询属性数据
 
+        路径   http://localhost:8080/api/property/queryPropertyBytyid
+
+        请求      get
+
+       参数  typeid (必填)
+
+        返回值    {code:"",message:"",data:*}
+      * */
+     @GetMapping("queryPropertyBytyid")
+    public  ResultData  queryPropertyBytyid(Integer typeid){
+          if (typeid==null){
+            return   ResultData.error(400,"请把类型ID传过来");
+          }
+          return  ResultData.success(shopPropertyService.queryPropertyBytyid(typeid));
+     }
 
 }

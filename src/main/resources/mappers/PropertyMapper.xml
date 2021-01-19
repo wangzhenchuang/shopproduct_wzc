@@ -47,4 +47,5 @@
       update shop_property set isDel=1 where id=#{id}
     </update>
 
+
 </mapper>
