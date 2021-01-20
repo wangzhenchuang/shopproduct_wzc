@@ -46,6 +46,8 @@ public class ShopTypeServiceImpl implements ShopTypeService {
     @Override
     public void updateShopTypeData(ShopType shopType) {
             shopType.setUpdateDate(new Date());
+            shopType.setIsDel(0);
+            shopType.setOperator("admin");
             shopTypeDao.updateShopTypeData(shopType);
     }
 
