@@ -7,7 +7,7 @@
 
         <!--分类管理数据查询-->
        <select id="queryShopTypeList" resultType="com.wzc.shopproduct_wzc.entity.po.ShopType">
-           select  * from  shop_type where 1=1
+           select  * from  shop_type where 1=1 and isDel=0
        </select>
 
         <!--根据 pid 查询分类数据-->
