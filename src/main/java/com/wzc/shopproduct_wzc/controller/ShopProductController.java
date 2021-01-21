@@ -61,6 +61,20 @@ public class ShopProductController {
         return  ResultData.success(map);
     }
 
+     /*
+        修改商品的接口
+    *
+    * 请求路径 http://localhost:8080/api/product/update
+    * 请求方式 post
+    *
+    * 参数
+    * 返回值 {code:"",message:"",data:null}
+    * */
+    @PostMapping("update")
+    public  ResultData  updateProductData(ShopProduct product){
+        shopProductService.updateProductData(product);
+        return  ResultData.success(null);
+    }
 
 
 }

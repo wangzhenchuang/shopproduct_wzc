@@ -74,4 +74,9 @@ public class ShopProductServiceImpl implements ShopProductService {
         map.put("list",productList);
         return map;
     }
+
+    @Override
+    public void updateProductData(ShopProduct product) {
+        shopProductDao.updateProductData(product);
+    }
 }

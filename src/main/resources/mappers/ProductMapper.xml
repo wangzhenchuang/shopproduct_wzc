@@ -6,7 +6,7 @@
 <mapper namespace="com.wzc.shopproduct_wzc.dao.ShopProductDao">
 
     <!--查询总条数-->
-    <select id="quetyProductByCount" resultType="java.lang.Long"
+    <select id="queryProductByCount" resultType="java.lang.Long"
             parameterType="com.wzc.shopproduct_wzc.entity.vo.ProductParams">
         select count(1) from shop_product where 1=1 and isDel=0
         <if test="name!=null and name!=''">
@@ -26,6 +26,12 @@
 
 
 
+     <!--修改数据-->
+    <update id="updateProductData" parameterType="com.wzc.shopproduct_wzc.entity.po.ShopProduct">
+         update shop_product set
+          name=#{name},title=#{title},bandId=#{bandId},typeId=#{typeId},productdecs=#{productdecs},price=#{price},imgPath=#{imgPath},stocks=#{stocks},sortNum=#{sortNum},createDate=#{createDate},updateDate=#{updateDate},author=#{author},isDel=#{isDel}
+          where  id=#{id}
+    </update>
 
 
 

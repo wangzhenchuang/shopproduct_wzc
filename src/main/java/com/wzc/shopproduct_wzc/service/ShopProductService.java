@@ -12,5 +12,6 @@ public interface ShopProductService {
     public Map  queryProductPage(ProductParams params);
 
 
+    public  void updateProductData(ShopProduct product);
 
 }

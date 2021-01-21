@@ -21,7 +21,8 @@ public interface ShopProductDao {
         //查询商品分页数据
         public List<ShopProduct> queryProductPage(ProductParams params);
 
-
+        //修改商品数据
+        public void   updateProductData(ShopProduct product);
 
 
 
