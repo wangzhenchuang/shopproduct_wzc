@@ -6,13 +6,12 @@ import com.wzc.shopproduct_wzc.dao.ProductPropertyDataDao;
 import com.wzc.shopproduct_wzc.dao.ShopProductDao;
 import com.wzc.shopproduct_wzc.entity.po.ShopProduct;
 import com.wzc.shopproduct_wzc.entity.po.ShopProductPropertyData;
+import com.wzc.shopproduct_wzc.entity.vo.ProductParams;
 import com.wzc.shopproduct_wzc.service.ShopProductService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class ShopProductServiceImpl implements ShopProductService {
@@ -62,5 +61,17 @@ public class ShopProductServiceImpl implements ShopProductService {
             dataList.add(ppd1);
         }
       productPropertyDataDao.add(dataList);
+    }
+
+    @Override
+    public Map queryProductPage(ProductParams params) {
+
+        Map map = new HashMap();
+
+        Long count = shopProductDao.queryProductByCount(params);
+        map.put("count",count);
+        List<ShopProduct> productList = shopProductDao.queryProductPage(params);
+        map.put("list",productList);
+        return map;
     }
 }

@@ -1,13 +1,13 @@
 package com.wzc.shopproduct_wzc.controller;
 
 import com.wzc.shopproduct_wzc.entity.po.ShopProduct;
+import com.wzc.shopproduct_wzc.entity.vo.ProductParams;
 import com.wzc.shopproduct_wzc.entity.vo.ResultData;
 import com.wzc.shopproduct_wzc.service.ShopProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @RestController
 @CrossOrigin
@@ -39,6 +39,26 @@ public class ShopProductController {
         }
         shopProductService.addProduictData(product,attr,sku);
         return  ResultData.success(null);
+    }
+
+
+    /*
+    查询商品数据
+    * 请求路径 请求路径 http://localhost:8080/api/product/list
+    *请求方式 post
+    *参数 start size(必填)
+    * 返回值 {code:"",message:"",data:list}
+    * */
+    @PostMapping("list")
+    public  ResultData  queryProductData(ProductParams params){
+        if (params.getSize()==null){
+            return  ResultData.error(400,"参数不符合规定");
+        }
+        if (params.getStart()==null){
+            return  ResultData.error(400,"参数不符合规定");
+        }
+        Map map = shopProductService.queryProductPage(params);
+        return  ResultData.success(map);
     }
 
 
