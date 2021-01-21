@@ -17,21 +17,30 @@ public class ShopProductController {
     @Autowired
     private ShopProductService shopProductService;
 
+
     /*
         新增商品的接口
     *
     * 请求路径 http://localhost:8080/api/product/add
     * 请求方式 post
     *
+    * 参数 attr sku (必填)
     * 返回值 {code:"",message:"",data:null}
     * */
 
 
     @PostMapping("add")
-    public ResultData  addproductData(ShopProduct product){
-        shopProductService.addProduictData(product);
+    public ResultData  addproductData(ShopProduct product,String attr,String sku){
+        if (attr==null){
+            return  ResultData.error(400,"spu的数据不能为空");
+        }
+        if (sku==null){
+            return  ResultData.error(400,"sku的数据不能为空");
+        }
+        shopProductService.addProduictData(product,attr,sku);
         return  ResultData.success(null);
     }
+
 
 
 }

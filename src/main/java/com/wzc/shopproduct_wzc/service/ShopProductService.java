@@ -4,6 +4,6 @@ import com.wzc.shopproduct_wzc.entity.po.ShopProduct;
 
 public interface ShopProductService {
 
-    public  void addProduictData(ShopProduct product);
+    public  void addProduictData(ShopProduct product,String attr,String sku);
 
 }
