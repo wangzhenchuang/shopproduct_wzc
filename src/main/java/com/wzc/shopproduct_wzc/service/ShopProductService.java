@@ -14,4 +14,6 @@ public interface ShopProductService {
 
     public  void updateProductData(ShopProduct product);
 
+    public  void deleteProduct(Integer id);
+
 }

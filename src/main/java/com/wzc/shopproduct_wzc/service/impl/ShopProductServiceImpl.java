@@ -79,4 +79,9 @@ public class ShopProductServiceImpl implements ShopProductService {
     public void updateProductData(ShopProduct product) {
         shopProductDao.updateProductData(product);
     }
+
+    @Override
+    public void deleteProduct(Integer id) {
+        shopProductDao.deleteProduct(id);
+    }
 }

@@ -76,5 +76,22 @@ public class ShopProductController {
         return  ResultData.success(null);
     }
 
+    /*
+        删除商品基本数据的接口
+    *
+    * 请求路径 http://localhost:8080/api/product/delete
+    * 请求方式 post
+    *
+    * 参数 id(毕传)
+    * 返回值 {code:"",message:"",data:null}
+    * */
+    @PostMapping("delete")
+    public  ResultData  deleteProduct(Integer id){
+        if (id==null){
+            return  ResultData.error(400,"参数不对");
+        }
+        shopProductService.deleteProduct(id);
+        return  ResultData.success(null);
+    }
 
 }

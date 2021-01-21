@@ -5,6 +5,7 @@ import com.wzc.shopproduct_wzc.entity.vo.ProductParams;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -25,5 +26,8 @@ public interface ShopProductDao {
         public void   updateProductData(ShopProduct product);
 
 
+        //删除商品基本数据
+        @Update("update shop_product set isDel=1 where id=#{id}")
+        public  Integer deleteProduct(Integer id);
 
 }
