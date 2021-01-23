@@ -30,4 +30,6 @@ public interface ShopProductDao {
         @Update("update shop_product set isDel=1 where id=#{id}")
         public  Integer deleteProduct(Integer id);
 
+
+
 }

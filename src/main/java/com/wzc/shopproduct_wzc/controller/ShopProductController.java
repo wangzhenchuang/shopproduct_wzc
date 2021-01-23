@@ -1,12 +1,14 @@
 package com.wzc.shopproduct_wzc.controller;
 
 import com.wzc.shopproduct_wzc.entity.po.ShopProduct;
+import com.wzc.shopproduct_wzc.entity.po.ShopProductPropertyData;
 import com.wzc.shopproduct_wzc.entity.vo.ProductParams;
 import com.wzc.shopproduct_wzc.entity.vo.ResultData;
 import com.wzc.shopproduct_wzc.service.ShopProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -92,6 +94,12 @@ public class ShopProductController {
         }
         shopProductService.deleteProduct(id);
         return  ResultData.success(null);
+    }
+
+    @GetMapping("queryData")
+    public  ResultData  querydata(Integer proId){
+        List<ShopProductPropertyData> querydata = shopProductService.querydata(proId);
+        return  ResultData.success(querydata);
     }
 
 }

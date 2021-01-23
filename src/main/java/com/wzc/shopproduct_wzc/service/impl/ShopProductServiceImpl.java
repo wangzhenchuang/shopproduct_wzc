@@ -84,4 +84,9 @@ public class ShopProductServiceImpl implements ShopProductService {
     public void deleteProduct(Integer id) {
         shopProductDao.deleteProduct(id);
     }
+
+    @Override
+    public List<ShopProductPropertyData> querydata(Integer proId) {
+        return productPropertyDataDao.querydata( proId);
+    }
 }
