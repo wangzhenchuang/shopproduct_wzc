@@ -21,7 +21,7 @@
         <if test="name!=null and name!=''">
             and name=#{name}
         </if>
-        limit ${size*(start-1)},#{size}
+        order by id desc limit ${size*(start-1)},#{size}
     </select>
 
 

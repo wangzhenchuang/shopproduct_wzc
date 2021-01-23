@@ -26,7 +26,7 @@
         <if test="nameCH!=null and nameCH!=''">
             and nameCH=#{nameCH}
         </if>
-         limit ${size*(start-1)},#{size}
+        order by id desc   limit ${size*(start-1)},#{size}
     </select>
 
     <insert id="addPropertyData" parameterType="com.wzc.shopproduct_wzc.entity.po.ShopProperty" useGeneratedKeys="true" keyProperty="id">
