@@ -20,4 +20,6 @@ public interface ShopPropertyService {
 
      public List<ShopProperty> queryPropertyBytyid(Integer typeid);
 
+     public Map  queryPropertyDataByTypeId(Integer typeId);
+
 }

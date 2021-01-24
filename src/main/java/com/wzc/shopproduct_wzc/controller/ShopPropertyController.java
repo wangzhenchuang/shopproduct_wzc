@@ -132,5 +132,21 @@ public class ShopPropertyController {
           }
           return  ResultData.success(shopPropertyService.queryPropertyBytyid(typeid));
      }
+/*
+      * 根据typeId查询属性值数据
+
+        路径   http://localhost:8080/api/property/queryPropertyDataByTypeId
+
+        请求      get
+
+       参数  typeid (必填)
+
+        返回值    {code:"",message:"",data:*}
+      * */
+     @GetMapping("queryPropertyDataByTypeId")
+    public  ResultData  queryPropertyDataByTypeId(Integer typeId){
+         Map map = shopPropertyService.queryPropertyDataByTypeId(typeId);
+         return   ResultData.success(map);
+     }
 
 }

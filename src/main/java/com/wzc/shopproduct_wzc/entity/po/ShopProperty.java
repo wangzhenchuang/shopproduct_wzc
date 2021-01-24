@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
+import java.util.List;
 
 public class ShopProperty {
 
@@ -29,6 +30,16 @@ public class ShopProperty {
     private  Date  updateDate;
 
     private  String  author;
+
+    private List<ShopProperty>  values;
+
+    public List getValues() {
+        return values;
+    }
+
+    public void setValues(List values) {
+        this.values = values;
+    }
 
     public Integer getId() {
         return id;
