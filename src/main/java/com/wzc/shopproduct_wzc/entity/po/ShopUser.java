@@ -15,8 +15,7 @@ public class ShopUser {
     private Integer phone;
     private String email; //邮箱
     private String idCard; // 身份证号
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthday;  //生日
     private String ingUrl;
     private Integer eduld;//学历

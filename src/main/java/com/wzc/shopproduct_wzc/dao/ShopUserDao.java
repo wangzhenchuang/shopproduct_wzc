@@ -18,4 +18,6 @@ public interface ShopUserDao {
     @Select("select * from shop_user where name=#{name}")
     public List<ShopUser> queryUserByName(String name);
 
+
+
 }
