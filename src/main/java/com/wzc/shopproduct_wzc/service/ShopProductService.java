@@ -21,4 +21,8 @@ public interface ShopProductService {
     //查询商品属性值
     public List<ShopProductPropertyData> querydata(Integer proId);
 
+    //查询属性值
+     // {skudata, attrdata,tableData}
+    public Map querySKUAndAttrCkvalues(Integer proId);
+
 }

@@ -32,15 +32,15 @@ public class ShopProductController {
 
 
     @PostMapping("add")
-    public ResultData  addproductData(ShopProduct product,String attr,String sku){
-        if (attr==null){
-            return  ResultData.error(400,"spu的数据不能为空");
+    public ResultData addproductData(ShopProduct product, String attr, String sku) {
+        if (attr == null) {
+            return ResultData.error(400, "spu的数据不能为空");
         }
-        if (sku==null){
-            return  ResultData.error(400,"sku的数据不能为空");
+        if (sku == null) {
+            return ResultData.error(400, "sku的数据不能为空");
         }
-        shopProductService.addProduictData(product,attr,sku);
-        return  ResultData.success(null);
+        shopProductService.addProduictData(product, attr, sku);
+        return ResultData.success(null);
     }
 
 
@@ -52,30 +52,30 @@ public class ShopProductController {
     * 返回值 {code:"",message:"",data:list}
     * */
     @PostMapping("list")
-    public  ResultData  queryProductData(ProductParams params){
-        if (params.getSize()==null){
-            return  ResultData.error(400,"参数不符合规定");
+    public ResultData queryProductData(ProductParams params) {
+        if (params.getSize() == null) {
+            return ResultData.error(400, "参数不符合规定");
         }
-        if (params.getStart()==null){
-            return  ResultData.error(400,"参数不符合规定");
+        if (params.getStart() == null) {
+            return ResultData.error(400, "参数不符合规定");
         }
         Map map = shopProductService.queryProductPage(params);
-        return  ResultData.success(map);
+        return ResultData.success(map);
     }
 
-     /*
-        修改商品的接口
-    *
-    * 请求路径 http://localhost:8080/api/product/update
-    * 请求方式 post
-    *
-    * 参数
-    * 返回值 {code:"",message:"",data:null}
-    * */
+    /*
+       修改商品的接口
+   *
+   * 请求路径 http://localhost:8080/api/product/update
+   * 请求方式 post
+   *
+   * 参数
+   * 返回值 {code:"",message:"",data:null}
+   * */
     @PostMapping("update")
-    public  ResultData  updateProductData(ShopProduct product){
+    public ResultData updateProductData(ShopProduct product) {
         shopProductService.updateProductData(product);
-        return  ResultData.success(null);
+        return ResultData.success(null);
     }
 
     /*
@@ -88,18 +88,34 @@ public class ShopProductController {
     * 返回值 {code:"",message:"",data:null}
     * */
     @PostMapping("delete")
-    public  ResultData  deleteProduct(Integer id){
-        if (id==null){
-            return  ResultData.error(400,"参数不对");
+    public ResultData deleteProduct(Integer id) {
+        if (id == null) {
+            return ResultData.error(400, "参数不对");
         }
         shopProductService.deleteProduct(id);
-        return  ResultData.success(null);
+        return ResultData.success(null);
     }
 
     @GetMapping("queryData")
-    public  ResultData  querydata(Integer proId){
+    public ResultData querydata(Integer proId) {
         List<ShopProductPropertyData> querydata = shopProductService.querydata(proId);
-        return  ResultData.success(querydata);
+        return ResultData.success(querydata);
     }
+
+     /*
+        查询属性值的数据
+    *
+    * 请求路径 http://localhost:8080/api/product/querySKUAndAttrCkvalues
+    * 请求方式 post
+    *
+    * 参数 pid(必传)
+    * 返回值 {code:"",message:"",data:map}
+    * */
+    @GetMapping("querySKUAndAttrCkvalues")
+    public ResultData querySKUAndAttrCkvalues(Integer proId) {
+        Map map = shopProductService.querySKUAndAttrCkvalues(proId);
+        return ResultData.success(map);
+    }
+
 
 }
