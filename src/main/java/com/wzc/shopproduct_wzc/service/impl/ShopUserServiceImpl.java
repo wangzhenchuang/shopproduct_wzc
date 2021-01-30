@@ -23,7 +23,7 @@ public class ShopUserServiceImpl implements ShopUserService {
     }
 
     @Override
-    public List<ShopUser> queryUserByName(String name) {
+    public ShopUser queryUserByName(String name) {
         return shopUserDao.queryUserByName(name);
     }
 

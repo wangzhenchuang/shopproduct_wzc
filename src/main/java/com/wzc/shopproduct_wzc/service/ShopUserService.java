@@ -8,5 +8,5 @@ public interface ShopUserService {
 
     public void  AddUserData(ShopUser user);
 
-    public  List<ShopUser>queryUserByName(String name);
+    public  ShopUser queryUserByName(String name);
 }
