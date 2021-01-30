@@ -7,4 +7,6 @@ import java.util.List;
 public interface QuanXianService {
 
     public List<QuanXian>  queryQuanXianData();
+
+    public  void addQuanXianData(QuanXian quanXian);
 }

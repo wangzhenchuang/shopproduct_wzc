@@ -6,6 +6,7 @@ import com.wzc.shopproduct_wzc.service.QuanXianService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 @Service
 public class QuanXianServiceImpl implements QuanXianService {
@@ -17,5 +18,11 @@ public class QuanXianServiceImpl implements QuanXianService {
     @Override
     public List<QuanXian> queryQuanXianData() {
         return quanXianDao.queryQuanXianData();
+    }
+
+    @Override
+    public void addQuanXianData(QuanXian quanXian) {
+        quanXian.setCreateDate(new Date());
+        quanXianDao.addQuanXianData(quanXian);
     }
 }
