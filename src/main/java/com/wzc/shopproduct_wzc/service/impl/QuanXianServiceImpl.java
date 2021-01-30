@@ -32,4 +32,9 @@ public class QuanXianServiceImpl implements QuanXianService {
         quanXian.setUpdateDate(new Date());
         quanXianDao.updateQuanXianData(quanXian);
     }
+
+    @Override
+    public Integer deleteQuanXianData(Integer id) {
+        return quanXianDao.deleteQuanXianData(id);
+    }
 }

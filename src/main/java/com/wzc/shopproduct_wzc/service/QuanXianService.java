@@ -11,4 +11,6 @@ public interface QuanXianService {
     public  void addQuanXianData(QuanXian quanXian);
 
     public  void  updateQuanXianData(QuanXian quanXian);
+
+    public  Integer deleteQuanXianData(Integer id);
 }
