@@ -48,5 +48,23 @@ public class QuanXianController {
             return  ResultData.success(null);
        }
 
+           /*
+     * 修改权限数据的接口文档
+     * 路径  http://localhost:8080/api/quanXian/update
+     *
+     * 请求方式  post
+     *
+     * 参数
+     *
+     * 返回值 回值    {code:"",message:"",data:null}
+     * */
+        @PostMapping("update")
+       public  ResultData updateQuanXianData(QuanXian quanXian){
+             quanXianService.updateQuanXianData(quanXian);
+            return  ResultData.success(null);
+       }
+
+
+
 
 }

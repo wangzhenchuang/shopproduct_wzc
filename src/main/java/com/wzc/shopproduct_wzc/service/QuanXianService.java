@@ -9,4 +9,6 @@ public interface QuanXianService {
     public List<QuanXian>  queryQuanXianData();
 
     public  void addQuanXianData(QuanXian quanXian);
+
+    public  void  updateQuanXianData(QuanXian quanXian);
 }

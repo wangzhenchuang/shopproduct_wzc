@@ -23,6 +23,13 @@ public class QuanXianServiceImpl implements QuanXianService {
     @Override
     public void addQuanXianData(QuanXian quanXian) {
         quanXian.setCreateDate(new Date());
+        quanXian.setUpdateDate(new Date());
         quanXianDao.addQuanXianData(quanXian);
+    }
+
+    @Override
+    public void updateQuanXianData(QuanXian quanXian) {
+        quanXian.setUpdateDate(new Date());
+        quanXianDao.updateQuanXianData(quanXian);
     }
 }
