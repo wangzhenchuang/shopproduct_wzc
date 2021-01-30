@@ -35,6 +35,6 @@ public class QuanXianServiceImpl implements QuanXianService {
 
     @Override
     public Integer deleteQuanXianData(Integer id) {
-        return quanXianDao.deleteQuanXianData(id);
+         return quanXianDao.deleteQuanXianData(id);
     }
 }

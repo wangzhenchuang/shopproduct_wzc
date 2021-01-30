@@ -23,7 +23,7 @@ public interface QuanXianDao {
         public  void  updateQuanXianData(QuanXian quanXian);
 
         @Update("update shop_quanxian set isDel=1 where id=#{id}")
-        public  Integer  deleteQuanXianData(Integer id);
+        public  Integer   deleteQuanXianData(Integer id);
 
 
 }

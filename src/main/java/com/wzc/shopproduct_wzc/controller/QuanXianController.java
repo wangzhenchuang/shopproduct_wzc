@@ -65,7 +65,7 @@ public class QuanXianController {
        }
 
       /*
-     * 删除权限数据的接口文档
+     *  删除权限数据的接口文档
      * 路径  http://localhost:8080/api/quanXian/delete
      *
      * 请求方式  post
