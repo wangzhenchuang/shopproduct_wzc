@@ -1,0 +1,10 @@
+package com.wzc.shopproduct_wzc.service;
+
+import com.wzc.shopproduct_wzc.entity.po.QuanXian;
+
+import java.util.List;
+
+public interface QuanXianService {
+
+    public List<QuanXian>  queryQuanXianData();
+}
