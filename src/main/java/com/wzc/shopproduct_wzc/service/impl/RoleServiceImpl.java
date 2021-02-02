@@ -26,4 +26,10 @@ public class RoleServiceImpl implements RoleService {
         role.setUpdateDate(new Date());
         roleDao.addRoleData(role);
     }
+
+    @Override
+    public void updateRoleData(Role role) {
+        role.setUpdateDate(new Date());
+        roleDao.updateRoleData(role);
+    }
 }

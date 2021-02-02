@@ -17,7 +17,8 @@ public interface RoleDao {
     @Insert("insert into shop_role (name,isDel,createDate,updateDate,author) value (#{name},#{isDel},#{createDate},#{updateDate},#{author})")
     public  void addRoleData(Role role);
 
-
+    @Update("update shop_role set name=#{name},updateDate=#{updateDate},author=#{author} where id=#{id}")
+    public void  updateRoleData(Role role);
 
 
 }

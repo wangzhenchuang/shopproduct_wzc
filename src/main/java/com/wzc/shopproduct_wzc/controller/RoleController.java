@@ -50,5 +50,21 @@ public class RoleController {
         return ResultData.success(null);
     }
 
+    /*修改角色数据接口
+    * 请求路径  http://localhost:8080/api/role/update
+    *
+    * 请求方式  post
+    *
+    * 参数
+    *
+    * 返回值     {code:"",message:"",data:null}
+    *
+    * */
+    @PostMapping("update")
+    public ResultData  updateRoleData(Role role){
+       roleService.updateRoleData(role);
+        return ResultData.success(null);
+    }
+
 
 }

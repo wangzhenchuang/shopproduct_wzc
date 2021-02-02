@@ -11,4 +11,6 @@ public interface RoleService {
 
     public  void addRoleData(Role role);
 
+    public  void updateRoleData(Role role);
+
 }
