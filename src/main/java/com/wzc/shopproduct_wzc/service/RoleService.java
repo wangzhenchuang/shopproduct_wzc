@@ -9,4 +9,6 @@ public interface RoleService {
 
     public List<Role> queryRoleData();
 
+    public  void addRoleData(Role role);
+
 }

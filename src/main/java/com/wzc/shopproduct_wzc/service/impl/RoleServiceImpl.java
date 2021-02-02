@@ -6,6 +6,7 @@ import com.wzc.shopproduct_wzc.service.RoleService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 @Service
 public class RoleServiceImpl implements RoleService {
@@ -17,5 +18,12 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public List<Role> queryRoleData() {
         return roleDao.queryRoleData();
+    }
+
+    @Override
+    public void addRoleData(Role role) {
+        role.setCreateDate(new Date());
+        role.setUpdateDate(new Date());
+        roleDao.addRoleData(role);
     }
 }
