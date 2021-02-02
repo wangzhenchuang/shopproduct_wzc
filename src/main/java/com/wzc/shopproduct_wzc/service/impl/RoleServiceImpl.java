@@ -32,4 +32,9 @@ public class RoleServiceImpl implements RoleService {
         role.setUpdateDate(new Date());
         roleDao.updateRoleData(role);
     }
+
+    @Override
+    public void deleteRoleData(Integer id) {
+        roleDao.deleteRoleData(id);
+    }
 }

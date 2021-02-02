@@ -21,4 +21,7 @@ public interface RoleDao {
     public void  updateRoleData(Role role);
 
 
+    @Update("update shop_role set isDel=1 where id=#{id}")
+    public  void deleteRoleData(Integer id);
+
 }

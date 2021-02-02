@@ -13,4 +13,7 @@ public interface RoleService {
 
     public  void updateRoleData(Role role);
 
+    public  void  deleteRoleData(Integer id);
+
+
 }
