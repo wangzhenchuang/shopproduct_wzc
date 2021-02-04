@@ -36,6 +36,7 @@ public class ShopPropertyServiceImpl implements ShopPropertyService {
     public Integer addPropertyData(ShopProperty property) {
         property.setAuthor("admin");
         property.setCreateDate(new Date());
+        property.setUpdateDate(new Date());
         Integer addPropertyData = shopPropertyDao.addPropertyData(property);
         return addPropertyData;
     }

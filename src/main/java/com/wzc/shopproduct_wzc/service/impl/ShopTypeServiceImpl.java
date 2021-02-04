@@ -38,6 +38,7 @@ public class ShopTypeServiceImpl implements ShopTypeService {
     @Override
     public Integer addShopTypeData(ShopType shopType) {
         shopType.setCreateDate(new Date());
+        shopType.setUpdateDate(new Date());
         shopType.setIsDel(0);
         shopType.setOperator("admin");
       return   shopTypeDao.addShopTypeData(shopType);

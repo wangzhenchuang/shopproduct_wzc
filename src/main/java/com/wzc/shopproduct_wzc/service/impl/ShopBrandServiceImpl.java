@@ -34,6 +34,7 @@ public class ShopBrandServiceImpl implements ShopBrandService {
     @Override
     public void addBrandData(ShopBrand shopBrand) {
         shopBrand.setCreateDate(new Date());
+        shopBrand.setUpdateDate(new Date());
         shopBrand.setIsDel(0);
         shopBrand.setAuthor("admin");
         shopBrandDao.addBrandData(shopBrand);
