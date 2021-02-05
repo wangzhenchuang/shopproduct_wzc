@@ -37,4 +37,9 @@ public class QuanXianServiceImpl implements QuanXianService {
     public Integer deleteQuanXianData(Integer id) {
          return quanXianDao.deleteQuanXianData(id);
     }
+
+    @Override
+    public QuanXian queryMenuDataById(Integer id) {
+        return quanXianDao.queryMenuDataById(id);
+    }
 }

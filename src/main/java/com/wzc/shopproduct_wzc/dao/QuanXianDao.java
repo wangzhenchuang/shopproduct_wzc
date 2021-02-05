@@ -22,6 +22,9 @@ public interface QuanXianDao {
         @Update(" update shop_quanxian set pid=#{pid},name=#{name},url=#{url},type=#{type},isDel=#{isDel},updateDate=#{updateDate},author=#{author} where id=#{id}")
         public  void  updateQuanXianData(QuanXian quanXian);
 
+        @Select("select * from shop_quanxian where id=#{id}")
+        public  QuanXian  queryMenuDataById(Integer id);
+
         @Update("update shop_quanxian set isDel=1 where id=#{id}")
         public  Integer   deleteQuanXianData(Integer id);
 

@@ -48,7 +48,7 @@ public class QuanXianController {
             return  ResultData.success(null);
        }
 
-           /*
+     /*
      * 修改权限数据的接口文档
      * 路径  http://localhost:8080/api/quanXian/update
      *
@@ -78,6 +78,22 @@ public class QuanXianController {
        public  ResultData deleteQuanXianData(Integer id){
              quanXianService.deleteQuanXianData(id);
             return  ResultData.success(null);
+       }
+
+        /*
+     *  根据id查询权限数据的接口文档
+     * 路径  http://localhost:8080/api/quanXian/queryMenuDataById
+     *
+     * 请求方式  post
+     *
+     * 参数
+     *
+     * 返回值 回值    {code:"",message:"",data:null}
+     * */
+       @PostMapping("queryMenuDataById")
+       public  ResultData  queryMenuDataById(Integer id){
+           QuanXian data = quanXianService.queryMenuDataById(id);
+           return  ResultData.success(data);
        }
 
 

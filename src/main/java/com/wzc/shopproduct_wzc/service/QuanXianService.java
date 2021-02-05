@@ -13,4 +13,6 @@ public interface QuanXianService {
     public  void  updateQuanXianData(QuanXian quanXian);
 
     public  Integer  deleteQuanXianData(Integer id);
+
+    public  QuanXian  queryMenuDataById(Integer id);
 }
