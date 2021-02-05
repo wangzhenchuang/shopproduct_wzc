@@ -13,4 +13,7 @@ public interface ShopUserService {
     public  ShopUser queryUserByName(String name);
 
     public Map  queryUserData(UserParams params);
+
+    public  void updateUserData(ShopUser user);
+
 }

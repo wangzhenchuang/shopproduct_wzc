@@ -44,5 +44,12 @@ public class ShopUserServiceImpl implements ShopUserService {
         return map;
     }
 
+    //修改用户信息
+    @Override
+    public void updateUserData(ShopUser user) {
+        user.setUpdateDate(new Date());
+        shopUserDao.updateUserData(user);
+    }
+
 
 }

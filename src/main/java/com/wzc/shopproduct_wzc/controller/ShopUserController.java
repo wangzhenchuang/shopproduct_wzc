@@ -1,5 +1,6 @@
 package com.wzc.shopproduct_wzc.controller;
 
+import com.wzc.shopproduct_wzc.entity.po.ShopUser;
 import com.wzc.shopproduct_wzc.entity.vo.ResultData;
 import com.wzc.shopproduct_wzc.entity.vo.UserParams;
 import com.wzc.shopproduct_wzc.service.ShopUserService;
@@ -40,6 +41,26 @@ public class ShopUserController {
         Map map = shopUserService.queryUserData(params);
         return  ResultData.success(map);
     }
+
+    /*
+     * 修改用户数据的接口文档
+     * 路径  http://localhost:8080/api/user/update
+     *
+     * 请求方式  post
+     *
+     * 参数  id (必填)
+     *
+     * 返回值 回值    {code:"",message:"",data:}
+     * */
+    @PostMapping("update")
+    public  ResultData  updateUserData(ShopUser user){
+        if (user.getId()==null){
+            return  ResultData.error(400,"参数不符合规则");
+        }
+        shopUserService.updateUserData(user);
+        return ResultData.success(null);
+    }
+
 
 
 }

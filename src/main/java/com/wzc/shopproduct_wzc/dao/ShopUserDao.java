@@ -5,6 +5,7 @@ import com.wzc.shopproduct_wzc.entity.vo.UserParams;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -24,7 +25,9 @@ public interface ShopUserDao {
 
     public  List<ShopUser> queryUserDataByPage(UserParams params);
 
-
+    @Update("update shop_user set realName=#{realName},sex=#{sex},phone=#{phone},email=#{email},birthday=#{birthday},imgUrl=#{imgUrl}" +
+            ",eduId=#{eduId},deptId=#{deptId},updateDate=#{updateDate} where id=#{id}")
+    public  void  updateUserData(ShopUser user);
 
 
 }
