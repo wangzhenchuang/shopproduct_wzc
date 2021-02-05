@@ -1,17 +1,12 @@
 package com.wzc.shopproduct_wzc.controller;
 
-import com.wzc.shopproduct_wzc.entity.po.ShopUser;
 import com.wzc.shopproduct_wzc.entity.vo.ResultData;
+import com.wzc.shopproduct_wzc.entity.vo.UserParams;
 import com.wzc.shopproduct_wzc.service.ShopUserService;
-import com.wzc.shopproduct_wzc.utils.Md5Utils;
-import com.wzc.shopproduct_wzc.utils.OssFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
-import java.util.List;
-import java.util.UUID;
+import java.util.Map;
 
 @RestController
 @RequestMapping("api/user")
@@ -23,79 +18,27 @@ public class ShopUserController {
     private ShopUserService shopUserService;
 
 
-    /*   图片上传
-     *请求路径 : http://localhost:8080/api/user/upload
-     *
-     *请求方式 post
-     *
-     *返回值
-     * Code(200);成功回调函数
-     * Message("success");返回值
-     * Data(data);数据
-     *
-     * 参数
-     *  file  必填
-     * */
-    //图片上传
-    @PostMapping("upload")
-    public ResultData upload(MultipartFile file) throws IOException {
-        //处理新名称
-        String originalFilename = file.getOriginalFilename();
-        //防止重命名
-        String newName = UUID.randomUUID().toString() + originalFilename.substring(originalFilename.lastIndexOf("."));
-        //存储路径
-        newName = "imgUrl/" + newName;
-        String file1 = OssFile.uploadFile(file.getInputStream(), newName);
-        return ResultData.success(file1);
-    }
-
-
-    /*
-     * 注册的接口文档
-     * 路径  http://localhost:8080/api/user/zhuce
+     /*
+     * 查询用户数据的接口文档
+     * 路径  http://localhost:8080/api/user/list
      *
      * 请求方式  post
      *
-     * 参数
+     * 参数  start  size (必填)
      *
-     * 返回值 回值    {code:"",message:"",data:}
+     * 返回值 回值    {code:"",message:"",data:map}
      * */
-    @PostMapping("zhuce")
-    public ResultData adduser(ShopUser user) {
-        ShopUser name = shopUserService.queryUserByName(user.getName());
-        if (name != null) {
-            return ResultData.error(400, "账号已存在");
+    @PostMapping("list")
+    public ResultData  queryUserData(UserParams params){
+        if (params.getSize()==null){
+            return  ResultData.error(400,"参数不符合规则");
         }
-        String md5 = Md5Utils.MD5(Md5Utils.MD5(user.getPassword()) + Md5Utils.MD5(user.getName()));
-        user.setPassword(md5);
-        shopUserService.AddUserData(user);
-        return ResultData.success(null);
-    }
- /*
-     * 注册的接口文档
-     * 路径  http://localhost:8080/api/user/login
-     *
-     * 请求方式  post
-     *
-     * 参数
-     *
-     * 返回值 回值    {code:"",message:"",data:} 200登录成功  400 密码错误 401 账号不存在
-     * */
-    //登录
-    @PostMapping("login")
-    public ResultData login(String name, String password) {
-        ShopUser user = shopUserService.queryUserByName(name);
-        String pass = Md5Utils.MD5(Md5Utils.MD5(password) + Md5Utils.MD5(name));
-        if (user != null) {
-            if (user.getPassword().equals(pass)) {
-                return ResultData.success(null);
-            } else {
-                return ResultData.error(400, "密码错误");
-            }
-        } else {
-            return ResultData.error(401, "账号不存在");
+        if (params.getStart()==null){
+            return  ResultData.error(400,"参数不符合规则");
         }
 
+        Map map = shopUserService.queryUserData(params);
+        return  ResultData.success(map);
     }
 
 

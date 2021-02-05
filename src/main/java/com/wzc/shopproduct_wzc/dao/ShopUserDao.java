@@ -1,6 +1,7 @@
 package com.wzc.shopproduct_wzc.dao;
 
 import com.wzc.shopproduct_wzc.entity.po.ShopUser;
+import com.wzc.shopproduct_wzc.entity.vo.UserParams;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -11,12 +12,17 @@ import java.util.List;
 public interface ShopUserDao {
 
 
-    @Insert("insert into shop_user (name,realName,password,sex,phone,email,idCard,birthday,ingUrl,eduld,deptId,createDate,updateDate)" +
-            " value (#{name},#{realName},#{password},#{sex},#{phone},#{email},#{idCard},#{birthday},#{ingUrl},#{eduld},#{deptId},#{createDate},#{updateDate})")
+    @Insert("insert into shop_user (name,realName,password,sex,phone,email,idCard,birthday,imgUrl,eduId,deptId,createDate,updateDate,isDel)" +
+            " value (#{name},#{realName},#{password},#{sex},#{phone},#{email},#{idCard},#{birthday},#{imgUrl},#{eduId},#{deptId},#{createDate},#{updateDate},#{isDel})")
     public  void AddUserData(ShopUser user);
 
     @Select("select * from shop_user where name=#{name}")
     public ShopUser queryUserByName(String name);
+
+
+    public   Long  queryUserByCount(UserParams params);
+
+    public  List<ShopUser> queryUserDataByPage(UserParams params);
 
 
 

@@ -12,22 +12,25 @@ public class ShopUser {
     private String realName;
     private String password;
     private Integer sex;//  0 女   1 男
-    private Integer phone;
+    private String phone;
     private String email; //邮箱
     private String idCard; // 身份证号
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date birthday;  //生日
-    private String ingUrl;
-    private Integer eduld;//学历
+    private String imgUrl;
+    private Integer eduId;//学历
     private Integer deptId;//部门
+
+    private  int  isDel; //逻辑删除
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createDate;
+
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date updateDate;
-
 
     public Integer getId() {
         return id;
@@ -69,11 +72,11 @@ public class ShopUser {
         this.sex = sex;
     }
 
-    public Integer getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(Integer phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
@@ -101,20 +104,20 @@ public class ShopUser {
         this.birthday = birthday;
     }
 
-    public String getIngUrl() {
-        return ingUrl;
+    public String getImgUrl() {
+        return imgUrl;
     }
 
-    public void setIngUrl(String ingUrl) {
-        this.ingUrl = ingUrl;
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 
-    public Integer getEduld() {
-        return eduld;
+    public Integer getEduId() {
+        return eduId;
     }
 
-    public void setEduld(Integer eduld) {
-        this.eduld = eduld;
+    public void setEduId(Integer eduId) {
+        this.eduId = eduId;
     }
 
     public Integer getDeptId() {
@@ -123,6 +126,14 @@ public class ShopUser {
 
     public void setDeptId(Integer deptId) {
         this.deptId = deptId;
+    }
+
+    public int getIsDel() {
+        return isDel;
+    }
+
+    public void setIsDel(int isDel) {
+        this.isDel = isDel;
     }
 
     public Date getCreateDate() {
