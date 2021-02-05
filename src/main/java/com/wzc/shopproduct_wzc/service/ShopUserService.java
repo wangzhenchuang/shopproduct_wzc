@@ -16,4 +16,6 @@ public interface ShopUserService {
 
     public  void updateUserData(ShopUser user);
 
+    public  void deleteUserData(Integer id);
+
 }

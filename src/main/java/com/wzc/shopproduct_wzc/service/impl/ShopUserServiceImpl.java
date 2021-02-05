@@ -51,5 +51,10 @@ public class ShopUserServiceImpl implements ShopUserService {
         shopUserDao.updateUserData(user);
     }
 
+    @Override
+    public void deleteUserData(Integer id) {
+        shopUserDao.deleteUserData(id);
+    }
+
 
 }

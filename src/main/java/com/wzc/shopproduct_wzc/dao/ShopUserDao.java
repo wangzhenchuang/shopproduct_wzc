@@ -29,5 +29,7 @@ public interface ShopUserDao {
             ",eduId=#{eduId},deptId=#{deptId},updateDate=#{updateDate} where id=#{id}")
     public  void  updateUserData(ShopUser user);
 
+    @Update("update shop_user set isDel=1 where id=#{id}")
+    public  void deleteUserData(Integer id);
 
 }
