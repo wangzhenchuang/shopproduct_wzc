@@ -1,6 +1,7 @@
 package com.wzc.shopproduct_wzc.dao;
 
 import com.wzc.shopproduct_wzc.entity.po.Role;
+import com.wzc.shopproduct_wzc.entity.vo.RoleParams;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -11,8 +12,9 @@ import java.util.List;
 @Mapper
 public interface RoleDao {
 
-    @Select("select * from shop_role")
-    public List<Role> queryRoleData();
+   public  Long  queryRoleByCount(RoleParams params);
+
+    public List<Role> queryRoleDataPage(RoleParams params);
 
     @Insert("insert into shop_role (name,isDel,createDate,updateDate,author) value (#{name},#{isDel},#{createDate},#{updateDate},#{author})")
     public  void addRoleData(Role role);
