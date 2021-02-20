@@ -1,6 +1,7 @@
 package com.wzc.shopproduct_wzc.service;
 
 import com.wzc.shopproduct_wzc.entity.po.ShopUser;
+import com.wzc.shopproduct_wzc.entity.po.ShopUserRole;
 import com.wzc.shopproduct_wzc.entity.vo.UserParams;
 
 import java.util.List;
@@ -17,5 +18,10 @@ public interface ShopUserService {
     public  void updateUserData(ShopUser user);
 
     public  void deleteUserData(Integer id);
+
+
+    public  void addUserRoleData(Integer uid,String rid);
+
+    public List<ShopUserRole> queryUserRoleByUid(Integer uid);
 
 }

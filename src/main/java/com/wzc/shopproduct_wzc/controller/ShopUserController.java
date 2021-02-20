@@ -1,12 +1,14 @@
 package com.wzc.shopproduct_wzc.controller;
 
 import com.wzc.shopproduct_wzc.entity.po.ShopUser;
+import com.wzc.shopproduct_wzc.entity.po.ShopUserRole;
 import com.wzc.shopproduct_wzc.entity.vo.ResultData;
 import com.wzc.shopproduct_wzc.entity.vo.UserParams;
 import com.wzc.shopproduct_wzc.service.ShopUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -78,6 +80,47 @@ public class ShopUserController {
         }
         shopUserService.deleteUserData(id);
         return  ResultData.success(null);
+    }
+
+
+
+      /*
+     *  //用户赋角色
+     * 路径  http://localhost:8080/api/user/addUserRole
+     *
+     * 请求方式  post
+     *
+     * 参数  id (必填)
+     *
+     * 返回值 回值    {code:"",message:"",data:}
+     * */
+    @PostMapping("addUserRole")
+    public  ResultData addUserRoleData(Integer uid, String  rid){
+        if (uid==null){
+            return  ResultData.error(400,"参数不符合规则");
+        }
+        if (rid==null){
+            return  ResultData.error(400,"参数不符合规则");
+        }
+        shopUserService.addUserRoleData(uid,rid);
+        return   ResultData.success(null);
+    }
+
+
+      /*
+     *  //查询用户所拥有的角色
+     * 路径  http://localhost:8080/api/user/listUserRole
+     *
+     * 请求方式  post
+     *
+     * 参数  uid (必填)
+     *
+     * 返回值 回值    {code:"",message:"",data:}
+     * */
+      @GetMapping("listUserRole")
+    public  ResultData  queryUserRoleByUid(Integer uid){
+        List<ShopUserRole> shopUserRoles = shopUserService.queryUserRoleByUid(uid);
+        return  ResultData.success(shopUserRoles);
     }
 
 

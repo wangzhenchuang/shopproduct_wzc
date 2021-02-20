@@ -1,11 +1,9 @@
 package com.wzc.shopproduct_wzc.dao;
 
 import com.wzc.shopproduct_wzc.entity.po.ShopUser;
+import com.wzc.shopproduct_wzc.entity.po.ShopUserRole;
 import com.wzc.shopproduct_wzc.entity.vo.UserParams;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -31,5 +29,17 @@ public interface ShopUserDao {
 
     @Update("update shop_user set isDel=1 where id=#{id}")
     public  void deleteUserData(Integer id);
+
+
+    //删除当前用户所拥有的角色
+    public  void deleteUserRole(Integer uid);
+
+    //用户赋角色
+    public  void  addUserRoleData(List<ShopUserRole> userRole);
+
+
+    //查询用户所拥有的角色
+    public  List<ShopUserRole> queryUserRoleByUid(Integer uid);
+
 
 }

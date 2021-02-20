@@ -2,15 +2,13 @@ package com.wzc.shopproduct_wzc.service.impl;
 
 import com.wzc.shopproduct_wzc.dao.ShopUserDao;
 import com.wzc.shopproduct_wzc.entity.po.ShopUser;
+import com.wzc.shopproduct_wzc.entity.po.ShopUserRole;
 import com.wzc.shopproduct_wzc.entity.vo.UserParams;
 import com.wzc.shopproduct_wzc.service.ShopUserService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class ShopUserServiceImpl implements ShopUserService {
@@ -54,6 +52,26 @@ public class ShopUserServiceImpl implements ShopUserService {
     @Override
     public void deleteUserData(Integer id) {
         shopUserDao.deleteUserData(id);
+    }
+
+    @Override
+    public void addUserRoleData(Integer uid,  String  rid) {
+        shopUserDao.deleteUserRole(uid);
+
+         String[] split = rid.split(",");
+        List<ShopUserRole> list = new ArrayList<>();
+        for (int i = 0; i <split.length ; i++) {
+            ShopUserRole ur = new ShopUserRole();
+            ur.setRid(Integer.parseInt(split[i]));
+            ur.setUid(uid);
+            list.add(ur);
+        }
+      shopUserDao.addUserRoleData(list);
+    }
+
+    @Override
+    public List<ShopUserRole> queryUserRoleByUid(Integer uid) {
+        return shopUserDao.queryUserRoleByUid(uid);
     }
 
 
