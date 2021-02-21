@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wzc.shopproduct_wzc.dao.ShopUserDao">
+
+
+    <!--用户赋角色-->
+    <insert id="addUserRoleData" parameterType="java.util.List">
+
+        insert  into user_role (uid,rid) values
+        <foreach collection="list" item="ur" separator=",">
+            (#{ur.uid},#{ur.rid})
+        </foreach>
+    </insert>
+
+
+     <delete id="deleteUserRole" parameterType="java.lang.Integer">
+
+        delete  from  user_role where uid=#{uid}
+    </delete>
+
+
+        <!--查询用户拥有的角色-->
+    <select id="queryUserRoleByUid" resultType="com.wzc.shopproduct_wzc.entity.po.ShopUserRole" parameterType="java.lang.Integer">
+
+        select uid,rid from user_role where uid=#{uid};
+    </select>
+
+</mapper>
