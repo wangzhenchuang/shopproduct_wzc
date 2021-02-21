@@ -12,11 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.UUID;
 @RestController
 @RequestMapping("api/login")
-@CrossOrigin
+
 public class LoginController {
 
      @Autowired
@@ -83,11 +86,12 @@ public class LoginController {
      * */
     //登录
     @PostMapping("login")
-    public ResultData login(String name, String password) {
+    public ResultData login(String name, String password, HttpSession session) {
         ShopUser user = shopUserService.queryUserByName(name);
         String pass = Md5Utils.MD5(Md5Utils.MD5(password) + Md5Utils.MD5(name));
         if (user != null) {
             if (user.getPassword().equals(pass)) {
+                session.setAttribute("user",user);
                 return ResultData.success(null);
             } else {
                 return ResultData.error(400, "密码错误");

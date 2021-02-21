@@ -10,7 +10,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/quanXian")
-@CrossOrigin
 public class QuanXianController {
 
         @Autowired

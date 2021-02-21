@@ -16,7 +16,6 @@ import java.util.Map;
 import java.util.UUID;
 
 @RestController
-@CrossOrigin
 @RequestMapping("api/brand")
 public class ShopBrandController {
 
