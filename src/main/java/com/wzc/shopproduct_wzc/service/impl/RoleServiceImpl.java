@@ -2,15 +2,14 @@ package com.wzc.shopproduct_wzc.service.impl;
 
 import com.wzc.shopproduct_wzc.dao.RoleDao;
 import com.wzc.shopproduct_wzc.entity.po.Role;
+import com.wzc.shopproduct_wzc.entity.po.RoleMenu;
+import com.wzc.shopproduct_wzc.entity.po.ShopUserRole;
 import com.wzc.shopproduct_wzc.entity.vo.RoleParams;
 import com.wzc.shopproduct_wzc.service.RoleService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class RoleServiceImpl implements RoleService {
@@ -45,5 +44,25 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public void deleteRoleData(Integer id) {
         roleDao.deleteRoleData(id);
+    }
+
+    @Override
+    public void addRoleMenuData(Integer rid, String mids) {
+        roleDao.deleteRoleMenu(rid);
+         String[] split = mids.split(",");
+        List<RoleMenu> list = new ArrayList<>();
+        for (int i = 0; i <split.length ; i++) {
+            RoleMenu rm = new RoleMenu();
+            rm.setRid(rid);
+            rm.setMid(Integer.parseInt(split[i]));
+            list.add(rm);
+        }
+        roleDao.addRoleMenuData(list);
+    }
+
+
+    @Override
+    public List<RoleMenu> queryRoleMenuByRid(Integer rid) {
+        return roleDao.queryRoleMenuByRid(rid);
     }
 }

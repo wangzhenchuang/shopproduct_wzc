@@ -1,6 +1,7 @@
 package com.wzc.shopproduct_wzc.service;
 
 import com.wzc.shopproduct_wzc.entity.po.Role;
+import com.wzc.shopproduct_wzc.entity.po.RoleMenu;
 import com.wzc.shopproduct_wzc.entity.vo.RoleParams;
 
 import java.util.List;
@@ -17,5 +18,8 @@ public interface RoleService {
 
     public  void  deleteRoleData(Integer id);
 
+    public  void  addRoleMenuData(Integer rid , String mids);
+
+    List<RoleMenu> queryRoleMenuByRid(Integer rid);
 
 }
