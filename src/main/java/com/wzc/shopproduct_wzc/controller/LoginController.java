@@ -3,6 +3,7 @@ package com.wzc.shopproduct_wzc.controller;
 import com.wzc.shopproduct_wzc.entity.po.ShopUser;
 import com.wzc.shopproduct_wzc.entity.vo.ResultData;
 import com.wzc.shopproduct_wzc.service.ShopUserService;
+import com.wzc.shopproduct_wzc.utils.JWT;
 import com.wzc.shopproduct_wzc.utils.Md5Utils;
 import com.wzc.shopproduct_wzc.utils.OssFile;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Base64;
 import java.util.UUID;
 @RestController
 @RequestMapping("api/login")
@@ -91,14 +93,30 @@ public class LoginController {
         String pass = Md5Utils.MD5(Md5Utils.MD5(password) + Md5Utils.MD5(name));
         if (user != null) {
             if (user.getPassword().equals(pass)) {
-                session.setAttribute("user",user);
-                return ResultData.success(null);
+                  String token = JWT.sign(user, 60 * 30);
+                return ResultData.success(token);
+
             } else {
                 return ResultData.error(400, "密码错误");
             }
         } else {
             return ResultData.error(401, "账号不存在");
         }
+    }
+
+    public static void main(String[] args) {
+        String a ="aaa";
+        // 进行加密
+        Base64.Encoder encoder = Base64.getEncoder();
+        byte[] aBytes = a.getBytes();
+        byte[] encode = encoder.encode(aBytes);
+        String s = new String(encode);
+        System.out.println(s);
+
+        Base64.Decoder decoder = Base64.getDecoder();
+        byte[] decode = decoder.decode(s);
+        String ss = new String(decode);
+        System.out.println(ss);
     }
 
 }
